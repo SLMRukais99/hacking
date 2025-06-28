@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>System Hacked</title>
+  <style>
+    body {
+      background-color: black;
+      color: lime;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 16px;
+      padding: 20px;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+    #terminal {
+      min-height: 100vh;
+      white-space: pre-wrap;
+    }
+    .hacked-heading {
+      color: red;
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 40px;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: transparent;
+      cursor: pointer;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <div id="overlay" title="Click anywhere to start"></div>
+  <div id="terminal"></div>
+
+  <audio id="beep" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+    const beep = document.getElementById("beep");
+    const overlay = document.getElementById("overlay");
+
+    const lines = [
+      "Connecting to secure server...",
+      "Target identified...",
+      "Accessing device...",
+      "Bypassing firewall...",
+      "Stealing personal photos...",
+      "Hacking Instagram...",
+      "Uploading malware...",
+      "Injecting trojan.exe...",
+      "Collecting search history...",
+      "Uploading payload to dark web...",
+      "Encrypting all files...",
+      "Running self-destruct protocol...",
+      "System meltdown initiated...",
+      "5...",
+      "4...",
+      "3...",
+      "2...",
+      "1...",
+      "**HACKED_HEADING**",
+      "",
+   
+    ];
+
+    let i = 0;
+
+    function typeLine() {
+      if (i < lines.length) {
+        const line = lines[i];
+
+        if (line === "**HACKED_HEADING**") {
+          const heading = document.createElement("div");
+          heading.className = "hacked-heading";
+          heading.textContent = "💀 SYSTEM HACKED 💀";
+          terminal.appendChild(heading);
+        } else {
+          terminal.innerHTML += line + "\n";
+        }
+
+        beep.play().catch(() => {
+          // Ignore errors if any
+        });
+
+        i++;
+        setTimeout(typeLine, 500);
+      }
+    }
+
+    // Start prank on first user click anywhere
+    overlay.addEventListener("click", () => {
+      overlay.style.display = "none"; // Remove overlay so user can see terminal
+      typeLine();
+    });
+  </script>
+</body>
+</html>
